@@ -1,0 +1,8 @@
+#macOS
+.DS_Store
+
+#Neovim
+*.swp
+*.swo
+*.swn
+*.un~
