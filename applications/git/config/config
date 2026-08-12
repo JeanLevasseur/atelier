@@ -1,0 +1,14 @@
+[user]
+	name = Jean Levasseur
+	email = levasseur.jean@me.com
+[github]
+	user = JeanLevasseur
+[init]
+	defaultBranch = main
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = ~/.config/git/gitignore
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[color]
+	ui = true
