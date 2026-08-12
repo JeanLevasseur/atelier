@@ -1,6 +1,12 @@
 #macOS
 .DS_Store
 
+#fish config
+applications/fish/fish_variables
+
+#Backup files
+*.bak
+
 #Neovim
 *.swp
 *.swo
