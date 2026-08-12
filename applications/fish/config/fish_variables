@@ -1,0 +1,15 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR BROWSER:/Applications/Safari\x2eapp/Contents/MacOS/Safari
+SETUVAR --export EDITOR:nvim
+SETUVAR --export EZA_COLORS:tokyonight
+SETUVAR --export EZA_CONFIG_DIR:/Users/wheezy/\x2econfig/eza
+SETUVAR --export HOMEBREW_BAT:true
+SETUVAR --export HOMEBREW_NO_ENV_HINTS:true
+SETUVAR --export NPM_CONFIG_USERCONFIG:/Users/wheezy/\x2econfig/npm/npmrc
+SETUVAR __fish_initialized:4300
+SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x234
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_features:no\x2dkeyboard\x2dprotocols
+SETUVAR fish_greeting:
+SETUVAR fish_user_paths:/opt/homebrew/bin
