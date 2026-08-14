@@ -2,7 +2,7 @@
 .DS_Store
 
 #fish config
-applications/fish/fish_variables
+applications/fish/config/fish_variables
 
 #Backup files
 *.bak
