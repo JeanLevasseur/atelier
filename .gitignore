@@ -3,6 +3,7 @@
 
 #fish config
 applications/fish/config/fish_variables
+applications/fish/config/conf.d
 
 #nvim lock-file
 applications/nvim/config/nvim-pack-lock.json
