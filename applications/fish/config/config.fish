@@ -1,6 +1,8 @@
 if status is-interactive
+    # Disable greeting message
+    set -g fish_greeting
+
     # Aliases
-    alias ls eza
     alias la 'ls -a'
     alias ll 'ls -l'
 
