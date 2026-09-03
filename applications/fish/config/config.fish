@@ -1,4 +1,3 @@
-# Set path
 if status is-interactive
     # Aliases
     alias man batman

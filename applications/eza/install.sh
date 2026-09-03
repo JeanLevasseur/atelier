@@ -38,4 +38,9 @@ ln -s "$SOURCE_DIR" "$TARGET_DIR"
 
 verify_symlink "$TARGET_DIR" "$SOURCE_DIR"
 
+###############################################################################
+# Success
+###############################################################################
+
+mark_installed "$APPLICATION"
 success "$APPLICATION module installed."
