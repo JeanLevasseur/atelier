@@ -69,13 +69,18 @@ vim.opt.listchars = {
 
 vim.pack.add({
 	{
-		src = "https://github.com/folke/tokyonight.nvim",
+		src = "https://github.com/catppuccin/nvim",
+        name = "catppuccin",
 	},
 })
-vim.cmd.colorscheme("tokyonight-night")
-vim.api.nvim_set_hl(0, "EndOfBuffer", {
-	link = "NonText",
+vim.cmd.colorscheme("catppuccin")
+require("catppuccin").setup({
+    flavour = "mocha",
+    auto_integrations = true,
 })
+-- vim.api.nvim_set_hl(0, "EndOfBuffer", {
+--    link = "NonText",
+-- })
 
 vim.opt.showmode = false
 vim.pack.add({
