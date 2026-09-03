@@ -4,7 +4,7 @@
 # Configuration
 ###############################################################################
 
-APPLICATION="bat"
+APPLICATION="npm"
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"

@@ -1,0 +1,6 @@
+editor=nvim
+init-author-name=Jean Levasseur
+init-author-email=levasseur.jean@me.com
+init-version=0.1.0
+init-license=MIT
+registry=https://registry.npmjs.org/
