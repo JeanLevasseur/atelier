@@ -4,6 +4,9 @@
 #fish config
 applications/fish/config/fish_variables
 
+#nvim lock-file
+applications/nvim/config/nvim-pack-lock.json
+
 #Backup files
 *.bak
 
