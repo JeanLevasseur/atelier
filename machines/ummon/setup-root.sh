@@ -61,7 +61,7 @@ if [[ ! -f  "${SECRETS_FILE}" ]]; then
 fi
 
 # Load machine-specific configuration.
-# shellcheck source=secrets.sh
+# shellcheck disable=SC1090
 source "${SECRETS_FILE}"
 
 ###############################################################################
