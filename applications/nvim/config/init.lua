@@ -98,10 +98,18 @@ vim.pack.add({
 	},
 })
 require("which-key").add({
-	{
+    {
+		"<leader>c",
+		group = "Code",
+	},
+    {
+		"<leader>d",
+		group = "Diagnostics",
+	},
+    {
 		"<leader>e",
 		group = "Edit",
-	},
+	}
 })
 
 -- TODO: to evaluate
@@ -132,9 +140,9 @@ vim.pack.add({
 })
 require("mini.comment").setup({
 	mappings = {
-		comment = "<leader>ec",
-		comment_line = "<leader>ec",
-		comment_visual = "<leader>ec",
+		comment = "<leader>cc",
+		comment_line = "<leader>cc",
+		comment_visual = "<leader>cc",
 		textobject = "",
 	},
 })
@@ -177,10 +185,10 @@ conform.setup({
 		python = { "ruff_format" },
 	},
 })
-vim.keymap.set("n", "<leader>ef", function()
+vim.keymap.set("n", "<leader>cf", function()
 	conform.format({ async = true })
 end, {
-	desc = "Édition: Formatter",
+	desc = "Code: Format",
 })
 
 -- ============================================================================
@@ -209,10 +217,26 @@ vim.pack.add({
 require("telescope").setup()
 
 -- ============================================================================
---
 -- Development
 -- Configures language-aware development features.
 -- ============================================================================
+
+-- Diagnostics
+vim.keymap.set("n", "<leader>df", function()
+    vim.diagnostic.setloclist({ open = true })
+end, { desc = "Diagnostics: Show file" })
+
+vim.keymap.set("n", "<leader>dl", function()
+    vim.diagnostic.open_float()
+end, { desc = "Diagnostics: Show line" })
+
+vim.keymap.set("n", "<leader>dn", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Diagnostics: Next" })
+
+vim.keymap.set("n", "<leader>dp", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Diagnostics: Previous" })
 
 -- Syntax analysis
 vim.pack.add({
