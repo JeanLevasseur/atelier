@@ -8,6 +8,9 @@ applications/fish/config/conf.d
 #nvim lock-file
 applications/nvim/config/nvim-pack-lock.json
 
+# Machine-specific configuration
+machines/*/secrets.sh
+
 #Backup files
 *.bak
 

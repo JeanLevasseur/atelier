@@ -23,29 +23,23 @@ set -euo pipefail
 ###############################################################################
 
 ###############################################################################
-# Configuration
-###############################################################################
-
-#Change this before running the script.
-
-###############################################################################
 # Helper functions
 ###############################################################################
 
 error() {
-    printf ‘Error: %s\n’ “$1” >&2
+    printf 'ERROR: %s\n' "$1" >&2
     exit 1
 }
 
 require_root() {
-    if [[ “${EUID}” -ne 0 ]]; then
-    error “This script must be run as root.”
+    if [[ "${EUID}" -ne 0 ]]; then
+    error "This script must be run as root."
     fi
 }
 
 require_arch_linux() {
     if [[ ! -f /etc/os-release ]]; then
-        error “Unable to identify the operating system.”
+        error "Unable to identify the operating system."
     fi
 
     # shellcheck disable=SC1091
@@ -56,16 +50,31 @@ require_arch_linux() {
 }
 
 ###############################################################################
+# Configuration
+###############################################################################
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SECRETS_FILE="${SCRIPT_DIR}/secrets.sh"
+
+if [[ ! -f  "${SECRETS_FILE}" ]]; then
+    error "Configuration file not found: ${SECRETS_FILE}"
+fi
+
+# Load machine-specific configuration.
+# shellcheck source=secrets.sh
+source "${SECRETS_FILE}"
+
+###############################################################################
 # System setup
 ###############################################################################
 
 update_system() {
-    printf ‘\n==> Updating system…\n’
+    printf '\n==> Updating system…\n'
     pacman -Syu --noconfirm
 }
 
 install_sudo() {
-    printf ‘\n==> Installing sudo…\n’
+    printf '\n==> Installing sudo…\n'
     pacman -S --needed --noconfirm sudo
 }
 
@@ -74,8 +83,8 @@ install_sudo() {
 ###############################################################################
 
 create_user() {
-    if id “${USERNAME}” &>/dev/null; then
-        printf ‘\n==> User “%s” already exists.\n’ “${USERNAME}”
+    if id "${USERNAME}" &>/dev/null; then
+        printf '\n==> User "%s" already exists.\n' "${USERNAME}"
         return
     fi
 
@@ -88,7 +97,7 @@ create_user() {
 }
 
 configure_sudo() {
-    local sudoers_file=”/etc/sudoers.d/10-wheel”
+    local sudoers_file="/etc/sudoers.d/10-wheel"
 
     printf '\n==> Configuring sudo...\n'
     cat > "${sudoers_file}" <<'EOF'
@@ -114,7 +123,9 @@ configure_ssh_key() {
         --owner "${USERNAME}" \
         --group "${USERNAME}" \
         "${ssh_directory}"
-    printf '%s\n' "${SSH_PUBLIC_KEY}" > "${authorized_keys}"
+    for key in "${SSH_PUBLIC_KEYS[@]}"; do
+        printf '%s\n' "$key" >> "${authorized_keys}"
+    done
     chown "${USERNAME}:${USERNAME}" "${authorized_keys}"
     chmod 600 "${authorized_keys}"
 }
@@ -156,4 +167,4 @@ Only after these tests succeed should root SSH login be disabled.
 EOF
 }
 
-main “$@”
+main "$@"
